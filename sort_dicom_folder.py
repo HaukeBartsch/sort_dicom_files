@@ -77,7 +77,7 @@ for root, dirs, files in os.walk(input, topdown=False):
             except AttributeError:
                 SequenceName=""
 
-            output_dir="%s/%s_%s_%s" % (output, SeriesNumber, SequenceName, SeriesDescription)
+            output_dir="%s/%s_%s/%s_%s/%s_%s_%s" % (output, PatientName, PatientID, StudyDate, StudyTime, SeriesNumber, SequenceName, SeriesDescription)
             output_path="%s/%s.dcm" % (output_dir,SOPInstanceUID)
             #print("found a dicom file: %s/%s.dcm\n" % (output_path,SOPInstanceUID))
             # create output directory

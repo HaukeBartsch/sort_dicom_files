@@ -2,6 +2,9 @@
 
 An example script to sort DICOM files. Command line arguments are <input> folder and <output> folder.
 
+> [!NOTE]
+> The python and the bash version published here are not the fastest ways to sort large numbers of files. Have a look at (https://github.com/HaukeBartsch/sort_dicom_files)[https://github.com/HaukeBartsch/sort_dicom_files] for a faster (compiled and multi-threaded) DICOM file sorter.
+
 ### Problem
 
 Image data in a hospital is stored in the DICOM file format. This file format uses a build-in header (instead of filenames, directory names or attached JSON files). We need to read the header and find out which of the DICOM files to process, what patient they belong to and what the scan parameter where used.

@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser(
                     description='Sort dicom folders into nicer folders')
 parser.add_argument('input')
 parser.add_argument('output')
+parser.add_argument('-s', '--symlink', action='store_true')
 args = parser.parse_args()
 
 if args.input != None:
@@ -26,7 +27,7 @@ for root, dirs, files in os.walk(input, topdown=False):
         # print(os.path.join(root, name))
         # load with pydicom
         try:
-            print(os.path.join(root, name))
+            #print(os.path.join(root, name))
             file_path=os.path.join(root, name)
             dataset = pydicom.dcmread(os.path.join(root, name))
             # get some header information from the dataset
@@ -83,8 +84,12 @@ for root, dirs, files in os.walk(input, topdown=False):
             # create output directory
             if not os.path.exists(output_dir):
                 os.makedirs(output_dir)
-            # copy file
-            shutil.copy(file_path, output_path)
+            if not(args.symlink):
+                # copy file
+                shutil.copy(file_path, output_path)
+            else:
+                # create a symlink instead (faster)
+                os.symlink(file_path, output_path)
             
 
         except pydicom.errors.InvalidDicomError:

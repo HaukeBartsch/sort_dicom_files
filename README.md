@@ -2,6 +2,8 @@
 
 An example script to sort DICOM files. Command line arguments are <input> folder and <output> folder.
 
+See the [sdcm](https://github.com/HaukeBartsch/sdcm) tool for a better alternative (much faster).
+
 > [!NOTE]
 > The python and the bash version published here are not the fastest ways to sort large numbers of files. Have a look at https://github.com/HaukeBartsch/sdcm for a faster (compiled and multi-threaded) DICOM file sorter.
 
